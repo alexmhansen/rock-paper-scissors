@@ -58,18 +58,18 @@ function playRound(playerSelection, computerSelection) {
 // Runs a best of 5 scenario, and determines the winner
 function game() {
     gameCount++;
-    if (gameCount <= 5) {
-        let playerSelection = prompt('Rock, Paper, or Scissors?').toUpperCase();
-        let computerSelection = computerPlay();
-        playRound();
-        console.log(playRound(playerSelection, computerSelection));
-        console.log('Your score: ' + playerWin);
-        console.log('Computer\'s Score: ' + computerWin);
-    } else {
-        console.log('Game over!')
-        console.log('Your score: ' + playerWin);
-        console.log('Computer\'s Score: ' + computerWin);
-    }
+    // if (gameCount <= 5) {
+    //     let playerSelection = prompt('Rock, Paper, or Scissors?').toUpperCase();
+    //     let computerSelection = computerPlay();
+    //     playRound();
+    //     console.log(playRound(playerSelection, computerSelection));
+    //     console.log('Your score: ' + playerWin);
+    //     console.log('Computer\'s Score: ' + computerWin);
+    // } else {
+    //     console.log('Game over!')
+    //     console.log('Your score: ' + playerWin);
+    //     console.log('Computer\'s Score: ' + computerWin);
+    // }
 }
 
 let playerWin = parseInt(0);
@@ -78,3 +78,4 @@ let gameCount = 0;
 let win = 'Won!'
 let lose = 'Lost!'
 let tie = 'Tie!'
+
