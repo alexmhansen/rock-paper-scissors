@@ -1,0 +1,14 @@
+body #btns {
+  display: flex;
+  justify-content: center;
+  margin-top: 25px;
+}
+body #container {
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+  font-size: 36px;
+  color: blue;
+}
+
+/*# sourceMappingURL=style.css.map */

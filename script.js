@@ -1,16 +1,23 @@
-// Plays for the computer
-function computerPlay() {
-    // Generates random number that correlates with a response
-    let num = Math.floor(Math.random() * 3);
+let playerWin = parseInt(0);
+let computerWin = parseInt(0);
+let gameCount = 0;
+let win = 'Won!'
+let lose = 'Lost!'
+let tie = 'Tie!'
 
-    if (num === 0) {
-        return 'ROCK';
-    } else if (num === 1) {
-        return 'PAPER';
-    } else {
-        return 'SCISSORS';
-    }
-}
+const btn1 = document.getElementById('btn1');
+const btn2 = document.getElementById('btn2');
+const btn3 = document.getElementById('btn3');
+
+// Div containing match result
+const body = document.body
+const div = document.createElement('div');
+body.append(div);
+div.setAttribute('id', 'container');
+const container = document.getElementById('container');
+
+// Div containing running score
+
 
 // Plays one round
 function playRound(playerSelection, computerSelection) {
@@ -55,26 +62,39 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-// Runs a best of 5 scenario, and determines the winner
-function game() {
-    gameCount++;
-    if (gameCount <= 5) {
-        let playerSelection = prompt('Rock, Paper, or Scissors?').toUpperCase();
-        let computerSelection = computerPlay();
-        playRound();
-        console.log(playRound(playerSelection, computerSelection));
-        console.log('Your score: ' + playerWin);
-        console.log('Computer\'s Score: ' + computerWin);
+// Plays for the user
+
+btn1.addEventListener('click', () => {
+    let playerSelection = 'ROCK';
+    let computerSelection = computerPlay();
+    let rock = playRound(playerSelection, computerSelection);
+    div.textContent = rock
+})
+
+btn2.addEventListener('click', () => {
+    let playerSelection = 'PAPER';
+    let computerSelection = computerPlay();
+    let paper = playRound(playerSelection, computerSelection);
+    div.textContent = paper
+})
+
+btn3.addEventListener('click', () => {
+    let playerSelection = 'SCISSORS';
+    let computerSelection = computerPlay();
+    let scissors = playRound(playerSelection, computerSelection);
+    div.textContent = scissors
+})
+
+// Plays for the computer
+function computerPlay() {
+    // Generates random number that correlates with a response
+    let num = Math.floor(Math.random() * 3);
+
+    if (num === 0) {
+        return 'ROCK';
+    } else if (num === 1) {
+        return 'PAPER';
     } else {
-        console.log('Game over!')
-        console.log('Your score: ' + playerWin);
-        console.log('Computer\'s Score: ' + computerWin);
+        return 'SCISSORS';
     }
 }
-
-let playerWin = parseInt(0);
-let computerWin = parseInt(0);
-let gameCount = 0;
-let win = 'Won!'
-let lose = 'Lost!'
-let tie = 'Tie!'
