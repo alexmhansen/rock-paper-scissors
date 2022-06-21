@@ -1,89 +1,95 @@
-let playerWin = parseInt(0);
-let computerWin = parseInt(0);
-let gameCount = 0;
-let win = 'Won!'
-let lose = 'Lost!'
-let tie = 'Tie!'
+let playerScore = parseInt(0);
+let computerScore = parseInt(0);
+let gameCount = parseInt(0);
+let win = 'Won!';
+let lose = 'Lost!';
+let tie = 'Tie!';
 
 const btn1 = document.getElementById('btn1');
 const btn2 = document.getElementById('btn2');
 const btn3 = document.getElementById('btn3');
 
 // Div containing match result
-const body = document.body
-const div = document.createElement('div');
-body.append(div);
-div.setAttribute('id', 'container');
 const container = document.getElementById('container');
 
-// Div containing running score
+const div = document.createElement('div');
+container.append(div);
+div.setAttribute('id', 'status');
 
+// Div containing running score
+const div1 = document.createElement('div');
+container.append(div1);
+div1.setAttribute('id', 'score');
+// const score = document.getElementById('score');
+div1.innerText = gameCount;
 
 // Plays one round
 function playRound(playerSelection, computerSelection) {
-
+    gameCount++;
     // Compare to ROCK
     if (playerSelection === 'ROCK') {
         if (computerSelection === 'PAPER') {
-            computerWin++;
+            computerScore++;
             return lose;
         } else if (computerSelection === 'SCISSORS') {
-            playerWin++;
+            playerScore++;
             return win;
         } else {
             return tie;
         }
-    }
+    };
 
     // Compare to PAPAER
     if (playerSelection === 'PAPER') {
         if (computerSelection === 'ROCK') {
-            playerWin++;
+            playerScore++;
             return win;
         } else if (computerSelection === 'SCISSORS') {
-            computerWin++;
+            computerScore++;
             return lose;
         } else {
             return tie;
         }
-    }
+    };
 
     // Compare to SCISSORS
     if (playerSelection === 'SCISSORS') {
         if (computerSelection === 'ROCK'){
-            computerWin++;
+            computerScore++;
             return lose;
         } else if (computerSelection === 'PAPER') {
-            playerWin++;
+            playerScore++;
             return win;
         } else {
             return tie;
         }
-    }
-}
+    };
+};
 
 // Plays for the user
-
 btn1.addEventListener('click', () => {
     let playerSelection = 'ROCK';
     let computerSelection = computerPlay();
     let rock = playRound(playerSelection, computerSelection);
-    div.textContent = rock
-})
+    div.textContent = rock;
+    div1.textContent = gameCount;
+});
 
 btn2.addEventListener('click', () => {
     let playerSelection = 'PAPER';
     let computerSelection = computerPlay();
     let paper = playRound(playerSelection, computerSelection);
-    div.textContent = paper
-})
+    div.textContent = paper;
+    div1.textContent = gameCount;
+});
 
 btn3.addEventListener('click', () => {
     let playerSelection = 'SCISSORS';
     let computerSelection = computerPlay();
     let scissors = playRound(playerSelection, computerSelection);
-    div.textContent = scissors
-})
+    div.textContent = scissors;
+    div1.textContent = gameCount;
+});
 
 // Plays for the computer
 function computerPlay() {
@@ -96,5 +102,5 @@ function computerPlay() {
         return 'PAPER';
     } else {
         return 'SCISSORS';
-    }
-}
+    };
+};
