@@ -1,8 +1,13 @@
 body #btns {
   display: flex;
   justify-content: center;
-  margin-top: 25px;
+  margin-top: 20px;
 }
+
+#btn1, #btn2, #btn3 {
+  margin: 5px;
+}
+
 body #status {
   display: flex;
   justify-content: center;

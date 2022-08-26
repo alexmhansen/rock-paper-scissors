@@ -18,14 +18,15 @@ div.setAttribute('id', 'status');
 
 // Div containing running score
 const div1 = document.createElement('div');
-container.append(div1);
-div1.setAttribute('id', 'score');
-// const score = document.getElementById('score');
-div1.innerText = gameCount;
+const div2 = document.createElement('div');
+container.appendChild(div1);
+container.appendChild(div2);
+
+div1.setAttribute('id', 'playerStatus')
+div2.setAttribute('id', 'computerStatus')
 
 // Plays one round
 function playRound(playerSelection, computerSelection) {
-    gameCount++;
     // Compare to ROCK
     if (playerSelection === 'ROCK') {
         if (computerSelection === 'PAPER') {
@@ -72,7 +73,8 @@ btn1.addEventListener('click', () => {
     let computerSelection = computerPlay();
     let rock = playRound(playerSelection, computerSelection);
     div.textContent = rock;
-    div1.textContent = gameCount;
+    div1.textContent = playerScore;
+    div2.textContent = computerScore;
 });
 
 btn2.addEventListener('click', () => {
@@ -80,7 +82,8 @@ btn2.addEventListener('click', () => {
     let computerSelection = computerPlay();
     let paper = playRound(playerSelection, computerSelection);
     div.textContent = paper;
-    div1.textContent = gameCount;
+    div1.textContent = playerScore;
+    div2.textContent = computerScore;
 });
 
 btn3.addEventListener('click', () => {
@@ -88,7 +91,8 @@ btn3.addEventListener('click', () => {
     let computerSelection = computerPlay();
     let scissors = playRound(playerSelection, computerSelection);
     div.textContent = scissors;
-    div1.textContent = gameCount;
+    div1.textContent = playerScore;
+    div2.textContent = computerScore;
 });
 
 // Plays for the computer
@@ -104,3 +108,8 @@ function computerPlay() {
         return 'SCISSORS';
     };
 };
+
+// Determines best of 5 outcome
+if (playerScore >= 5) {
+    alert('You have won the match!');
+}
